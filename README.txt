@@ -1,4 +1,4 @@
-this autoit script will periodically check for new gutenberg ebooks, by default it is set to grab english books.
+this autoit script will periodically check for and download new gutenberg ebooks, by default it is set to grab english books.
 the delay between checks is slow enough (10 minutes) to not get your ip flagged, reduce the delay at your own risk.
 
 
