@@ -8,6 +8,9 @@ global $path     =     iniread('config.ini', 'settings', 'path', @scriptdir)
 global $notify   = int(iniread('config.ini', 'settings', 'notify', true))
 global $delay    = int(iniread('config.ini', 'settings', 'delay', 600))
 
+;quick checks
+tests()
+
 while true
    $book_id = check($book_id)
    wait_sec($delay)
@@ -23,9 +26,11 @@ func check($number); book id
    if not $status then return $id
    $id += 1
 
-   ;book in english?
-   $status = check_english($html)
-   if not $status then return $id
+   ;book in target language?
+   if $language <> '' then
+	  $status = check_english($html)
+	  if not $status then return $id
+   endif
 
    ;html version? - download it
    $status = check_html($html)
@@ -89,7 +94,31 @@ endfunc
 
 
 
+func tests()
+   if $path = 'C:\Users\User\ExampleFolder\' or $path = '' then
+	  msgbox(0, 'config.ini error', '[path] invalid - set a path for the ebooks to be downloaded to.')
+	  exit
+   endif
 
+   if ($book_id < 1) then
+	  msgbox(0, 'config.ini error', '[place] invalid - set a starting book id.')
+	  exit
+   endif
+
+   if ($delay < 1) then
+	  msgbox(0, 'config.ini error', '[delay] invalid - set amount of seconds to wait in between ebook downloads.')
+	  exit
+   endif
+
+   if ($notify < 0) or ($notify > 1) then
+	  msgbox(0, 'config.ini error', '[notify] invalid - set to 0 to disable message, 1 to enable.')
+	  exit
+   endif
+
+
+
+
+endfunc
 
 
 
