@@ -1,5 +1,5 @@
-#include<array.au3>
-#include<file.au3>
+;#include<array.au3>
+;#include<file.au3>
 
 ;startup
 global $book_id  = int(iniread('config.ini', 'settings', 'place', -1))
