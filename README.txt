@@ -7,7 +7,7 @@ instructions:
 - make sure "gutenberg-scraper.au3" and "config.ini" are in the same folder
 
 - you need to check the values in "config.ini":
-  - place=63231 [integer; the starting gutenberg book id to begin seaching from.]
+  - place=63231 [integer; the starting gutenberg book id to begin searching from.]
   
   - language=English [string; the language you want to download. leave empty to download all languages.]
   
